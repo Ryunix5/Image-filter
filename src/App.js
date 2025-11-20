@@ -145,6 +145,7 @@ export default function App() {
   // Temp canvases (small for pixelate, large for filter post-pass)
   const tempSmallRef = useRef(null);
   const tempLargeRef = useRef(null);
+  const fileInputRef = useRef(null);
 
   // Current image
   const [img, setImg] = useState(null);
@@ -501,7 +502,7 @@ export default function App() {
           <div className="flex flex-col items-center gap-4">
             <div className="h-16 w-16 rounded-full border-4 border-neutral-700 border-t-sky-500 spin" />
             <img
-              src="/Sparrow.png"
+              src="Sparrow.png"
               alt="Sparrow logo"
               className="h-12 opacity-90"
               onError={(e) => { e.currentTarget.style.display = "none"; }}
@@ -518,7 +519,7 @@ export default function App() {
             <div className="flex items-center gap-3">
               {/* Your logo instead of the blue gradient block */}
               <img
-                src="/Sparrow.png"
+                src="Sparrow.png"
                 alt="Sparrow logo"
                 className="h-10 w-10 object-contain rounded-md shadow"
                 onError={(e) => { e.currentTarget.style.display = "none"; }}
@@ -527,10 +528,23 @@ export default function App() {
             </div>
             <div className="flex flex-wrap items-center gap-2">
               {/* File input is hidden; this button triggers it */}
-              <label className="inline-flex cursor-pointer items-center">
-                <input type="file" accept="image/*" onChange={onFile} className="hidden" />
-                <Btn variant="ghost">Upload Image</Btn>
-              </label>
+              {/* Hidden file input */}
+              <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              onChange={onFile}
+              className="hidden"
+              />
+
+            {/* Button that opens the file dialog */}
+              <Btn
+             variant="ghost"
+            onClick={() => fileInputRef.current?.click()}
+              >
+              Upload Image
+              </Btn>
+
               <Btn onClick={resetFilters}>Reset</Btn>
               <Btn onClick={() => { pushHistory(); }}>Snapshot</Btn>
               <Btn onClick={() => undo()}>Undo ⌘/Ctrl+Z</Btn>
