@@ -517,7 +517,6 @@ export default function App() {
         <header className="mb-6 rounded-2xl border border-neutral-800 bg-neutral-900/60 backdrop-blur-sm px-5 py-4 shadow-lg">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-3">
-              {/* Your logo instead of the blue gradient block */}
               <img
                 src="Sparrow.png"
                 alt="Sparrow logo"
