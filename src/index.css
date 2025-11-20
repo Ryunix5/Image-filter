@@ -28,7 +28,7 @@ body {
 
 /* Don’t select text or drag images while sliding */
 .no-select { -webkit-user-select: none; user-select: none; }
-.no-select * { -webkit-user-drag: none; user-drag: none; }
+.no-select * { -webkit-user-drag: none; }
 
 /* Small <kbd> styling for shortcut hints */
 kbd {
